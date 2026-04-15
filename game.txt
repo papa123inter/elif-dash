@@ -2,14 +2,12 @@ import pygame
 import random
 import sys
 
-# Инициализируем только видео
 pygame.display.init()
 
-# Настройки
 WIDTH, HEIGHT = 800, 400
 FPS = 60
 WHITE = (255, 255, 255)
-BLACK = (10, 10, 20)  # Темно-синее небо
+BLACK = (10, 10, 20)  
 CYAN = (0, 255, 255)
 RED = (255, 50, 50)
 GRAY = (40, 40, 45)  # Земля
@@ -19,13 +17,11 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Evil Dash: Records & Parallax")
 clock = pygame.time.Clock()
 
-# --- ФОНОВЫЕ ОБЪЕКТЫ ---
 stars = [[random.randint(0, WIDTH), random.randint(0, HEIGHT - 100), random.uniform(0.2, 0.5)] for _ in range(50)]
 mountains = [[i * 300, 400, 150] for i in range(4)]
 
 
 def draw_text_pixel(text, x, y, size=3):
-    """Рисуем цифры из квадратов (безопасно)"""
     digits = {
         '0': [(0, 0), (1, 0), (2, 0), (0, 1), (2, 1), (0, 2), (2, 2), (0, 3), (2, 3), (0, 4), (1, 4), (2, 4)],
         '1': [(2, 0), (2, 1), (2, 2), (2, 3), (2, 4)],
@@ -136,7 +132,6 @@ def main():
                     else:
                         player.jump()
 
-        # --- ЛОГИКА ИГРЫ ---
         if state == "GAME":
             player.update()
             player.draw()
